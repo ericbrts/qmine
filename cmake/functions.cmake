@@ -6,6 +6,22 @@ macro (set_runtime_output_directory runtime_folder)
   endforeach()
 endmacro()
 
+macro(group_source_files source_file_list)
+  foreach(source_file_path ${source_file_list})
+    get_filename_component(source_file_absolute_path ${source_file_path} ABSOLUTE)
+    get_filename_component(source_file_absolute_dir ${source_file_absolute_path} DIRECTORY)
+    file(RELATIVE_PATH source_file_relative_dir ${CMAKE_CURRENT_LIST_DIR} ${source_file_absolute_dir})
+
+    if(source_file_relative_dir)
+      string(REPLACE "/" "\\" source_filter_in_project ${source_file_relative_dir})
+    else()
+      set(source_filter_in_project " ")
+    endif()
+
+    source_group(${source_filter_in_project} FILES ${source_file_absolute_path})
+  endforeach()
+endmacro()
+
 function(add_subdirectories_with_cmakelists root_path)
   file(GLOB_RECURSE all_cmakelists ${root_path}/*CMakeLists.txt)
   foreach(cmakelists ${all_cmakelists})
