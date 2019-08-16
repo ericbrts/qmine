@@ -1,6 +1,7 @@
 set(project_name QMine)
 
-add_executable(${project_name} main.cpp)
+find_package(Qt5 COMPONENTS Core) # Fixes an issue with CMake 3.13
+add_executable(${project_name} main.cpp NavPresenter.cpp NavPresenter.h ../QML/Mine.qrc)
 
 use_qt(${project_name})
 

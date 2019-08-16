@@ -16,7 +16,7 @@ endfunction()
 
 function(use_qt project_name)
   set(qt_root C:/Qt/5.12.0/msvc2015_64 CACHE STRING "Qt root")
-  set(qt_modules_to_import Core Gui Widgets Qml Quick QuickWidgets Network OpenGL Multimedia)
+  set(qt_modules_to_import Core Gui Qml Quick QuickWidgets Network OpenGL Multimedia)
 
   find_package(Qt5 PATHS ${qt_root} COMPONENTS ${qt_modules_to_import} REQUIRED)
   foreach(module ${qt_modules_to_import})
@@ -29,7 +29,8 @@ function(use_qt project_name)
   list(APPEND bin_dep_dirs ${qt_root}/bin/)
 
   # Instruct CMake to run moc automatically when needed
-  set(CMAKE_AUTOMOC ON)
-  set(CMAKE_AUTORCC ON)
+  set_property(TARGET ${project_name} PROPERTY AUTOMOC TRUE)
+  set_property(TARGET ${project_name} PROPERTY AUTORCC TRUE)
+
   list(APPEND includes ${CMAKE_CURRENT_BINARY_DIR}) #for generated MOC files
 endfunction()
