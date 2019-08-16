@@ -23,7 +23,7 @@ namespace Navigation
     void AddPage(const QString & pageName, std::unique_ptr<APage> page);
 
   public slots:
-    //void loadPage(const QString & pageName);
+    void loadPage(const QString & pageName);
     void onPageLoaded();
 
   private slots:

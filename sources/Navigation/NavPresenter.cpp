@@ -22,6 +22,19 @@ namespace Navigation
     mPageList[pageName] = std::move(page);
   }
 
+  void NavPresenter::loadPage(const QString & pageName)
+  {
+    auto pageIt = mPageList.find(pageName);
+    if (pageIt == mPageList.end())
+    {
+      throw std::runtime_error("Page not found: " + pageName.toStdString());
+    }
+
+    const auto & page = pageIt->second;
+    page->Load(mEngine.rootContext());
+    mPageLoader->setProperty("source", page->GetUrl());
+  }
+
   void NavPresenter::onPageLoaded()
   {
 
@@ -39,6 +52,6 @@ namespace Navigation
     {
       throw std::runtime_error("QML entry was not properly created");
     }
-    QObject::connect(mPageLoader, SIGNAL(loaded()), this, SLOT(onPageLoaded()));  
+    QObject::connect(mPageLoader, SIGNAL(loaded()), this, SLOT(onPageLoaded()));
   }
 }
