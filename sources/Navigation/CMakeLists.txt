@@ -1,7 +1,8 @@
 set(project_name Navigation)
 set(sources
   NavPresenter.cpp
-  NavPresenter.h)
+  NavPresenter.h
+  Pages/APage.h)
 
 find_package(Qt5 COMPONENTS Core) # Fixes an issue with CMake 3.13
 add_library(${project_name} STATIC ${sources})
