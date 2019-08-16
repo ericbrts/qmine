@@ -1,4 +1,4 @@
-#include "QMine/NavPresenter.h"
+#include "Navigation/NavPresenter.h"
 
 #include <QQuickItem>
 #include <QDebug>

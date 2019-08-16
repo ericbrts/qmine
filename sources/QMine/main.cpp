@@ -1,8 +1,6 @@
-#include <iostream>
-
 #include <QGuiApplication>
 
-#include "QMine/NavPresenter.h"
+#include "Navigation/NavPresenter.h"
 
 
 namespace
