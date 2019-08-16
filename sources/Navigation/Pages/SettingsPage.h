@@ -10,7 +10,7 @@ namespace Navigation
   public:
     SettingsPage();
 
-    void load(QQmlContext * qmlContext) override;
-    void unload() override;
+    void Load(QQmlContext * qmlContext) override;
+    void Unload() override;
   };
 }

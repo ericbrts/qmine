@@ -8,12 +8,12 @@ namespace Navigation
   {
   }
 
-  void HomePage::load(QQmlContext * qmlContext)
+  void HomePage::Load(QQmlContext * qmlContext)
   {
 
   }
 
-  void HomePage::unload()
+  void HomePage::Unload()
   {
 
   }

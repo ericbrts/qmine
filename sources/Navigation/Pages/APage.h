@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QString>
+#include <QUrl>
 #include <QQmlContext>
 
 
@@ -15,10 +15,15 @@ namespace Navigation
 
     virtual ~APage() = default;
 
-    virtual void load(QQmlContext * qmlContext) = 0;
-    virtual void unload() = 0;
+    QUrl GetUrl() const
+    {
+      return mQmlPageUrl;
+    }
+
+    virtual void Load(QQmlContext * qmlContext) = 0;
+    virtual void Unload() = 0;
 
   protected:
-    QString mQmlPageUrl;
+    QUrl mQmlPageUrl;
   };
 }

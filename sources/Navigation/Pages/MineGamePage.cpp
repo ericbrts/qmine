@@ -8,12 +8,12 @@ namespace Navigation
   {
   }
 
-  void MineGamePage::load(QQmlContext * qmlContext)
+  void MineGamePage::Load(QQmlContext * qmlContext)
   {
 
   }
 
-  void MineGamePage::unload()
+  void MineGamePage::Unload()
   {
 
   }
