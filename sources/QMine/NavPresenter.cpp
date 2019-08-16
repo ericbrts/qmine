@@ -10,14 +10,30 @@ namespace Navigation
   NavPresenter::NavPresenter(const std::string & qmlEntryPoint)
     : mPageLoader(nullptr)
   {
-    mEngine.addImportPath(QStringLiteral("qrc:///"));
+    QObject::connect(&mEngine, &QQmlApplicationEngine::objectCreated, this, &NavPresenter::onMainObjectCreated, Qt::DirectConnection);
+
+    mEngine.addImportPath(QStringLiteral(":/"));
     mEngine.rootContext()->setContextProperty(QStringLiteral("navPresenter"), this);
     mEngine.load(QUrl(QString::fromStdString(qmlEntryPoint)));
-    auto mainItem = mEngine.rootObjects().first();
-    mPageLoader = mainItem->findChild<QObject*>("pageLoader");
-    if (mPageLoader)
-      QObject::connect(mPageLoader, SIGNAL(loaded()), this, SLOT(onPageLoaded()));
-    else
-      qDebug() << "Could not find pageLoader Item in main.qml";
+  }
+
+  void NavPresenter::onPageLoaded()
+  {
+
+  }
+
+  void NavPresenter::onMainObjectCreated(QObject * mainObject, const QUrl &url)
+  {
+    if (mainObject == nullptr)
+    {
+      throw std::runtime_error("QML entry point was not properly created");
+    }
+
+    mPageLoader = mainObject->findChild<QObject*>("pageLoader");
+    if (mPageLoader == nullptr)
+    {
+      throw std::runtime_error("QML entry was not properly created");
+    }
+    QObject::connect(mPageLoader, SIGNAL(loaded()), this, SLOT(onPageLoaded()));  
   }
 }

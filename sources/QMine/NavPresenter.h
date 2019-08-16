@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <QString>
+#include <QUrl>
 
 
 namespace Navigation
@@ -17,7 +18,10 @@ namespace Navigation
 
   public slots:
     //void loadPage(const QString & pageName);
-    //void onPageLoaded();
+    void onPageLoaded();
+
+  private slots:
+    void onMainObjectCreated(QObject *object, const QUrl &url);
 
   private:
     QQmlApplicationEngine mEngine;

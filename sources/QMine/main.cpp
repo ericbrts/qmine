@@ -2,16 +2,17 @@
 
 #include <QGuiApplication>
 
-#include "MathUtils/Matrix/Matrix2d.h"
+#include "QMine/NavPresenter.h"
 
+
+namespace
+{
+  const std::string qmlEntryPoint = "qrc:/Mine/main.qml";
+}
 
 int main(int argc, char* argv[])
 {
-  std::cout << "Hello world" << std::endl;
-
-  MathUtils::Matrix2d<double> mat(4, 4);
-
   QGuiApplication app(argc, argv);
-
+  Navigation::NavPresenter navPresenter(qmlEntryPoint);
   return app.exec();
 }
