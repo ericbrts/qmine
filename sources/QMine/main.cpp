@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 
 #include "Navigation/NavPresenter.h"
+#include "Navigation/NavFactory.h"
 
 
 namespace
@@ -12,5 +13,6 @@ int main(int argc, char* argv[])
 {
   QGuiApplication app(argc, argv);
   Navigation::NavPresenter navPresenter(qmlEntryPoint);
+  Navigation::NavFactory::BuildPages(navPresenter);
   return app.exec();
 }

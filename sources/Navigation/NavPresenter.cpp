@@ -17,6 +17,11 @@ namespace Navigation
     mEngine.load(QUrl(QString::fromStdString(qmlEntryPoint)));
   }
 
+  void NavPresenter::AddPage(const QString & pageName, std::unique_ptr<APage> page)
+  {
+    mPageList[pageName] = std::move(page);
+  }
+
   void NavPresenter::onPageLoaded()
   {
 
