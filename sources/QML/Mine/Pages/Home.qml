@@ -1,8 +1,8 @@
 import QtQuick 2.5
 import QtQuick.Controls 2.5
-//import QtQml.Models 2.12
 
-Rectangle {
+
+BasePage {
   anchors.fill: parent
   color: "#444444"
 
@@ -13,14 +13,6 @@ Rectangle {
     font { family: "Arial"; bold: true; capitalization: Font.SmallCaps; pixelSize: 150 }
     style: Text.Sunken
     styleColor: "white"
-  }
-
-  function goTo(pageName)
-  {
-    if (pageName === "quitApp")
-      Qt.quit()
-    else
-      navPresenter.loadPage(pageName)
   }
 
   ListModel { id: navButtonModel

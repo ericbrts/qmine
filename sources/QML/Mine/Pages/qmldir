@@ -1,2 +1,5 @@
 module Mine.Pages
-HomePage 1.0 HomePage.qml
+BasePage 1.0 BasePage.qml
+Game 1.0 Game.qml
+Home 1.0 Home.qml
+Settings 1.0 Settings.qml

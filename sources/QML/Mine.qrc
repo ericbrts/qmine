@@ -2,7 +2,10 @@
   <qresource prefix="/">
     <file>Mine/main.qml</file>
     <file>Mine/qmldir</file>
+    <file>Mine/Pages/BasePage.qml</file>
+    <file>Mine/Pages/Game.qml</file>
     <file>Mine/Pages/Home.qml</file>
+    <file>Mine/Pages/Settings.qml</file>
     <file>Mine/Pages/qmldir</file>
   </qresource>
 </RCC>
