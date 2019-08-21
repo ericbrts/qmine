@@ -3,6 +3,7 @@
 #include <QQuickItem>
 #include <QDebug>
 #include <QQmlContext>
+#include <QGuiApplication>
 
 
 namespace Navigation
@@ -11,6 +12,7 @@ namespace Navigation
     : mPageLoader(nullptr)
   {
     QObject::connect(&mEngine, &QQmlApplicationEngine::objectCreated, this, &NavPresenter::onMainObjectCreated, Qt::DirectConnection);
+    QObject::connect(&mEngine, &QQmlApplicationEngine::quit, &QGuiApplication::quit);
 
     mEngine.addImportPath(QStringLiteral(":/"));
     mEngine.rootContext()->setContextProperty(QStringLiteral("navPresenter"), this);
