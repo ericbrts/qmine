@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+
+
 namespace MathUtils
 {
   template<class T>
